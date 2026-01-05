@@ -2,7 +2,7 @@ const productsData = [
   {
     id: 1,
     tag: "hero-product",
-    tagline: "Keep the noise out, or in. You choose.",
+    tagline: "Keep the noise out, or In. You choose.",
     heroImage: "/images/products/jbl660nc-1.png",
     images: [
       "/images/products/jbl660nc-1.png",

@@ -1,24 +1,26 @@
 import React from "react";
 
-const Slider1 = () => {
+const Slider1 = ({ product }) => {
   return (
     <div className="flex flex-col-reverse md:flex-row h-full min-h-screen items-center justify-around px-6">
       <div className="md:mt-0">
         <div className="mb-1 md:mb-3">
           <p className="m-0 font-semibold text-xl md:text-2xl">
-            JBL Live 660NC
+            {product.title}
           </p>
         </div>
         <div className="mb-3 md:mb-5">
-          <p className="font-bold text-3xl md:text-5xl">
-            Keep The Noise <br /> Out, Or In. You <br /> Choose
-          </p>
+          <h1 className="font-bold text-3xl md:text-5xl leading-[1.1] max-w-[20ch] md:max-w-[18ch] ">
+            {product.tagline}
+          </h1>
         </div>
         <div className="mb-3 md:mb-4">
           <div className="flex gap-6">
-            <p className="font-bold text-2xl md:text-3xl">₹9,999</p>
-            <p className="font-semibold text-xl md:text-2xl line-through">
-              ₹14,999
+            <p className="font-bold text-2xl md:text-3xl">
+              ₹{product.finalPrice?.toLocaleString()}
+            </p>
+            <p className="font-semibold text-xl md:text-2xl line-through opacity-50">
+              ₹{product.originalPrice?.toLocaleString()}
             </p>
           </div>
         </div>
@@ -31,7 +33,7 @@ const Slider1 = () => {
 
       <div className="mb-4 md:mb-0">
         <img
-          src={"images/products/jbl660nc-1.png"}
+          src={product.images[0]}
           alt=""
           className="w-[14rem] sm:w-[25rem] md:w-[35rem] h-auto object-contain"
         />
