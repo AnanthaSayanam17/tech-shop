@@ -34,30 +34,34 @@ export default function Hero() {
       </Slider>
 
       <style jsx global>{`
-        /* 1. Remove all default background colors from Slick */
-        .slick-slider,
-        .slick-list,
-        .slick-track,
-        .slick-slide,
-        .slick-slide > div {
-          background: transparent !important;
+        /* Ensure the dots sit on top of everything */
+        .slick-dots {
+          bottom: 15px !important; /* Moved slightly up */
+          z-index: 100 !important;
+          display: block !important;
         }
 
-        /* 2. Change Dot Size and Color */
+        /* Make dots easier to see/touch on mobile */
+        .slick-dots li {
+          margin: 0 5px !important;
+          width: 12px !important;
+          height: 12px !important;
+        }
+
         .slick-dots li button:before {
-          font-size: 8px !important; /* Smaller dots (default is 20px) */
-          color: #a9aec2 !important; /* Your text color for inactive */
-          opacity: 0.5;
+          font-size: 10px !important;
+          color: #888 !important;
+          opacity: 0.7;
         }
 
         .slick-dots li.slick-active button:before {
-          color: #dc2626 !important; /* Red for active */
+          color: red !important;
           opacity: 1;
-          font-size: 10px !important; /* Slightly larger active dot */
         }
 
-        .slick-dots {
-          bottom: 30px;
+        /* Prevent the slider from scrolling horizontally */
+        .slick-list {
+          overflow: hidden !important;
         }
       `}</style>
     </div>
