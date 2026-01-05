@@ -3,7 +3,6 @@ import React from "react";
 const Slider1 = () => {
   return (
     <div className="flex flex-col-reverse md:flex-row h-full min-h-screen items-center justify-around px-6">
-      {/* 1. TEXT CONTENT (First in code = Left on Laptop) */}
       <div>
         <div className="mb-3">
           <p className="m-0 font-semibold text-2xl">JBL Live 660NC</p>
@@ -25,8 +24,6 @@ const Slider1 = () => {
           </button>
         </div>
       </div>
-
-      {/* 2. IMAGE CONTENT (Second in code = Right on Laptop) */}
       <div className="mb-8 md:mb-0">
         <img
           src={"images/products/jbl660nc-1.png"}
