@@ -5,6 +5,7 @@ import TopProducts from "../Components/TopProducts";
 import Navbar from "../Components/Navbar";
 import OurAdvantages from "../Components/OurAdvantages";
 import Footer from "../Components/Footer";
+import FeaturedProducts from "../Components/FeaturedProducts";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
         }}
       >
         <Hero />
+        <FeaturedProducts />
         <TopProducts />
         <Navbar />
         <OurAdvantages />

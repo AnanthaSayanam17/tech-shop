@@ -34,9 +34,7 @@ const OurAdvantages = () => {
 
   return (
     <div className="py-24 px-4 bg-transparent">
-      <h2 className="text-2xl font-bold text-white text-center mb-16">
-        Our Advantages
-      </h2>
+      <h2 className="text-2xl font-bold  text-center mb-16">Our Advantages</h2>
       <div className="mt-32 flex flex-col md:flex-row items-center justify-around gap-10 md:gap-4">
         {advantages.map((item) => (
           <div key={item.id} className="flex items-center gap-4 group">
@@ -44,7 +42,7 @@ const OurAdvantages = () => {
               {item.icon}
             </div>
             <div className="flex flex-col items-start">
-              <div className="text-white text-sm md:text-base font-semibold tracking-wide">
+              <div className=" text-sm md:text-base font-semibold tracking-wide">
                 {item.title}
               </div>
               <div className="text-xs md:text-sm font-normal text-gray-400 tracking-wide">

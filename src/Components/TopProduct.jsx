@@ -25,23 +25,21 @@ const TopProduct = ({ product }) => {
       </div>
 
       <div className="mb-4">
-        <p className="m-0 font-bold text-lg text-white truncate">
-          {product.title}
-        </p>
+        <p className="m-0 font-bold text-lg  truncate">{product.title}</p>
         <div className="text-gray-400 mt-1 h-10">{product.info}</div>
       </div>
 
       <hr className="m-0 mb-4 border-gray-700" />
 
       <div className="flex items-center gap-4 mb-4">
-        <p className="font-bold text-xl text-white">₹{product.finalPrice}</p>
+        <p className="font-bold text-xl ">₹{product.finalPrice}</p>
         <p className="font-semibold text-sm line-through text-gray-500">
           ₹{product.originalPrice}
         </p>
       </div>
 
       <div className="mt-auto">
-        <button className="bg-red-600 hover:bg-red-700 py-2.5 px-4 rounded-lg text-white font-bold w-full transition-colors active:scale-95">
+        <button className="bg-red-600 hover:bg-red-700 py-2.5 px-4 rounded-lg text-white font-semibold w-full transition-colors active:scale-95">
           Add to Cart
         </button>
       </div>

@@ -19,9 +19,7 @@ const TopProducts = () => {
 
   return (
     <div className="container mx-auto px-4 py-10">
-      <h2 className="text-2xl font-bold text-white text-center mb-6">
-        Top Products
-      </h2>
+      <h2 className="text-2xl font-bold  text-center mb-6">Top Products</h2>
 
       <div className="flex flex-wrap justify-around items-center gap-3 my-5 pb-2">
         {["All", "Headphones", "Earbuds", "Earphones", "Neckbands"].map(
@@ -29,7 +27,7 @@ const TopProducts = () => {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-6 py-2 text-white text-sm transition-all duration-300 active:scale-95 
+              className={`px-6 py-2  text-sm font-semibold transition-all duration-300 active:scale-95 
                 ${
                   selectedCategory === cat
                     ? "bg-red-600 rounded-xl"
