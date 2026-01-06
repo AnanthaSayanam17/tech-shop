@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import productsData from "../data/productsData";
 import { useCart } from "../Context/CartContext";
@@ -6,12 +6,25 @@ import toast, { Toaster } from "react-hot-toast";
 
 const DetailProduct = () => {
   const { id } = useParams();
-  const product = productsData.find((p) => p.id === parseInt(id));
+  const product = productsData.find((p) => String(p.id) === String(id));
 
   const [activeImage, setActiveImage] = useState(product?.images[0] || "");
   const [isAdded, setIsAdded] = useState(false);
 
   const { addToCart } = useCart();
+
+  useEffect(() => {
+    if (product) {
+      setActiveImage(product.images[0]);
+      window.scrollTo(0, 0);
+    }
+  }, [id, product]);
+
+  if (!product) {
+    return (
+      <div className="text-center py-20 text-white">Product not found!</div>
+    );
+  }
 
   if (!product) {
     return <div className="text-center py-20">Product not found!</div>;

@@ -5,7 +5,9 @@ import toast, { Toaster } from "react-hot-toast";
 const TopProduct = ({ product }) => {
   const [isAdded, setIsAdded] = useState(false);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     const limitReached = addToCart(product);
 
     if (limitReached) {
@@ -32,7 +34,6 @@ const TopProduct = ({ product }) => {
 
   return (
     <div className="p-5 border border-gray-800 rounded-xl w-full bg-[#1a1a1a] flex flex-col hover:border-gray-600 transition-all duration-300 shadow-lg">
-      <Toaster position="bottom-right" reverseOrder={false} />
       <div className="flex justify-center items-center mb-5 h-48">
         <img
           src={product.images[0]}
@@ -72,7 +73,7 @@ const TopProduct = ({ product }) => {
               ? "bg-green-600 hover:bg-green-700"
               : "bg-red-600 hover:bg-red-700"
           }`}
-          onClick={handleAddToCart}
+          onClick={(e) => handleAddToCart(e)}
         >
           {isAdded ? "Added!" : "Add to Cart"}
         </button>

@@ -1,4 +1,6 @@
 import React from "react";
+import { useParams } from "react-router-dom"; // Import useParams to get the ID
+import productsData from "../data/productsData"; // Import data
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import DetailProduct from "../Components/DetailProduct";
@@ -6,6 +8,11 @@ import Specifications from "../Components/Specifications";
 import RelatedProducts from "../Components/RelatedProducts";
 
 const DetailsPage = () => {
+  const { id } = useParams();
+  const product = productsData.find((p) => p.id === parseInt(id));
+
+  if (!product) return null;
+
   return (
     <div
       style={{
@@ -17,7 +24,8 @@ const DetailsPage = () => {
       <Navbar />
       <DetailProduct />
       <Specifications />
-      <RelatedProducts />
+      <RelatedProducts currentProduct={product} />
+
       <Footer />
     </div>
   );
