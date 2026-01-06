@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+/* Only affect links with class 'product-link' */
+.product-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-link:hover {
+  color: inherit;
+  text-decoration: none;
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Import Link for navigation
+import { Link } from "react-router-dom"; // For navigation
 import productsData from "../data/productsData";
 import TopProduct from "./TopProduct";
 
@@ -12,9 +12,7 @@ const TopProducts = () => {
   }, []);
 
   const filteredProducts = products.filter((item) => {
-    if (selectedCategory === "All") {
-      return true;
-    }
+    if (selectedCategory === "All") return true;
     return item.category?.toLowerCase() === selectedCategory.toLowerCase();
   });
 
@@ -47,8 +45,14 @@ ${
         {filteredProducts.length > 0 ? (
           <>
             {/* Display first 11 products */}
-            {filteredProducts.slice(0, 11).map((item) => (
-              <TopProduct key={item.id} product={item} />
+            {filteredProducts.slice(0, 11).map((product) => (
+              <Link
+                to={`/product/${product.id}`}
+                key={product.id}
+                className="group product-link" // Add this class
+              >
+                <TopProduct product={product} />
+              </Link>
             ))}
 
             {/* 12th Card: Browse All Products */}
@@ -62,7 +66,6 @@ ${
               <p className="font-bold text-xl mb-3 group-hover:text-red-500 transition-colors">
                 Browse All Products
               </p>
-
               <span className="text-red-600 text-3xl font-bold group-hover:translate-x-2 transition-transform">
                 →
               </span>

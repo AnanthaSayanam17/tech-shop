@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectCoverflow } from "swiper/modules";
+import { Link } from "react-router-dom"; // For navigation
 import productsData from "../data/productsData";
 
 import "swiper/css";
@@ -43,11 +44,8 @@ const FeaturedProducts = () => {
             if (dots.length > 0) {
               const activeDotIndex = swiper.realIndex % 5;
               dots.forEach((dot, index) => {
-                if (index === activeDotIndex) {
-                  dot.classList.add("active-dot");
-                } else {
-                  dot.classList.remove("active-dot");
-                }
+                if (index === activeDotIndex) dot.classList.add("active-dot");
+                else dot.classList.remove("active-dot");
               });
             }
           }}
@@ -67,7 +65,7 @@ const FeaturedProducts = () => {
           }}
           coverflowEffect={{
             rotate: 0,
-            stretch: 60, // Increased further to handle taller vertical text
+            stretch: 60,
             depth: 150,
             modifier: 1,
             slideShadows: false,
@@ -76,36 +74,50 @@ const FeaturedProducts = () => {
         >
           {featured.map((product, index) => (
             <SwiperSlide key={`featured-${product.id}-${index}`}>
-              <div className="flex flex-col items-center justify-center bg-transparent transition-all duration-500 w-full max-w-[280px] mx-auto">
-                {/* 1. TITLE AND PRICE ON TOP */}
-                <div className="mb-6 text-center w-full min-h-[100px] flex flex-col justify-end">
-                  <h3 className="text-sm md:text-lg font-bold mb-2  whitespace-normal leading-tight px-2">
-                    {product.title}
-                  </h3>
-                </div>
+              {/* Link with class to remove default styles */}
+              <Link to={`/product/${product.id}`} className="featured-link">
+                <div className="flex flex-col items-center justify-center bg-transparent transition-all duration-500 w-full max-w-[280px] mx-auto cursor-pointer">
+                  {/* Title */}
+                  <div className="mb-6 text-center w-full min-h-[100px] flex flex-col justify-end">
+                    <h3 className="text-sm md:text-lg font-bold mb-2 whitespace-normal leading-tight px-2">
+                      {product.title}
+                    </h3>
+                  </div>
 
-                {/* 2. IMAGE ON BOTTOM */}
-                <div className="relative">
-                  <img
-                    src={product.images[0]}
-                    alt={product.title}
-                    className="w-full h-40 md:h-56 object-contain drop-shadow-[0_10px_30px_rgba(255,255,255,0.2)]"
-                  />
+                  {/* Image */}
+                  <div className="relative">
+                    <img
+                      src={product.images[0]} // ALWAYS show first image
+                      alt={product.title}
+                      className="w-full h-40 md:h-56 object-contain drop-shadow-[0_10px_30px_rgba(255,255,255,0.2)]"
+                    />
+                  </div>
+
+                  {/* Price */}
+                  <div className="flex justify-center items-center gap-3 mt-2">
+                    <p className="font-bold text-lg md:text-xl">
+                      ₹{product.finalPrice.toLocaleString()}
+                    </p>
+                    <p className="font-semibold text-xs md:text-sm line-through text-gray-400">
+                      ₹{product.originalPrice.toLocaleString()}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex justify-center items-center gap-3">
-                  <p className="font-bold text-lg md:text-xl ">₹9,999</p>
-                  <p className="font-semibold text-xs md:text-sm line-through text-gray-400">
-                    ₹14,999
-                  </p>
-                </div>
-              </div>
+              </Link>
             </SwiperSlide>
           ))}
           <div className="custom-pagination !mt-16 flex justify-center items-center gap-3"></div>
         </Swiper>
       </div>
 
+      {/* Global Styles */}
       <style jsx global>{`
+        /* Remove link default styles */
+        .featured-link {
+          text-decoration: none !important;
+          color: inherit !important;
+        }
+
         .featured-swiper {
           padding-top: 20px !important;
           padding-bottom: 60px !important;
