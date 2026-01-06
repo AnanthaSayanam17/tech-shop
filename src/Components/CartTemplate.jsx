@@ -18,7 +18,7 @@ const CartTemplate = () => {
   const discount = originalTotal - finalTotal;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 font-sans">
+    <div className="mx-auto max-w-6xl px-4 py-12 font-sans overflow-x-hidden">
       {cartItems.length === 0 ? (
         <div className="min-h-[60vh] flex flex-col items-center justify-center text-center gap-6">
           <h1 className="text-3xl md:text-5xl font-bold text-white">
@@ -41,12 +41,13 @@ const CartTemplate = () => {
           </Link>
         </div>
       ) : (
-        <div className="flex flex-col lg:flex-row gap-12">
+        <div className="flex flex-col lg:flex-row gap-12 items-center lg:items-start">
+          {/* LEFT CART ITEMS */}
           <div className="w-full lg:w-[60%]">
             <div className="rounded-sm overflow-y-auto h-[500px] pr-4 no-scrollbar">
               {cartItems.map((product) => (
                 <div key={product.id}>
-                  <div className="flex flex-row items-start gap-6 py-8 relative">
+                  <div className="flex flex-col md:flex-row items-center md:items-start gap-6 py-8 relative">
                     <div className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
                       <img
                         src={product.images ? product.images[0] : product.image}
@@ -54,9 +55,9 @@ const CartTemplate = () => {
                         className="max-w-full max-h-full object-contain"
                       />
                     </div>
-                    <div className="flex-1 flex flex-col gap-3">
-                      <div className="flex justify-between items-start">
-                        <h3 className="text-lg md:text-xl font-medium max-w-[85%] leading-tight">
+                    <div className="flex-1 flex flex-col gap-3 items-center md:items-start">
+                      <div className="flex justify-between items-start flex-wrap w-full">
+                        <h3 className="text-lg md:text-xl font-medium max-w-[85%] leading-tight text-center md:text-left">
                           {product.title}
                         </h3>
                         <button
@@ -67,7 +68,7 @@ const CartTemplate = () => {
                         </button>
                       </div>
 
-                      <div className="flex gap-3 items-center">
+                      <div className="flex gap-3 items-center flex-wrap justify-center md:justify-start">
                         <span className="font-bold text-3xl">
                           ₹{product.finalPrice.toLocaleString()}
                         </span>
@@ -108,16 +109,18 @@ const CartTemplate = () => {
               ))}
             </div>
           </div>
-          <div className="w-full lg:w-[40%] lg:pl-8">
-            <div className="flex flex-col gap-6 sticky top-10">
-              <div className="flex items-baseline gap-2 font-bold">
+
+          {/* RIGHT ORDER SUMMARY */}
+          <div className="w-full lg:w-[40%] lg:pl-0 lg:pl-8 flex flex-col items-center lg:items-start">
+            <div className="flex flex-col gap-6 sticky top-10 w-full">
+              <div className="flex items-baseline gap-2 font-bold flex-wrap justify-center lg:justify-start w-full">
                 <h2 className="text-2xl">Order Summary</h2>
                 <span className="text-gray-400 text-lg">
                   ({cartItems.length} items)
                 </span>
               </div>
 
-              <div className="space-y-4 pt-4">
+              <div className="space-y-4 pt-4 w-full text-center lg:text-left">
                 <div className="flex justify-between text-gray-400 text-lg">
                   <p>Original Price</p>
                   <p className="font-bold">₹{originalTotal.toLocaleString()}</p>
@@ -136,9 +139,9 @@ const CartTemplate = () => {
                 </div>
               </div>
 
-              <hr className="border-gray-800 my-2" />
+              <hr className="border-gray-800 my-2 w-full" />
 
-              <div className="flex justify-between items-center py-4">
+              <div className="flex justify-between items-center py-4 flex-wrap w-full text-center lg:text-left">
                 <p className="text-2xl font-bold">Total Price</p>
                 <p className="text-3xl font-bold">
                   ₹{finalTotal.toLocaleString()}
