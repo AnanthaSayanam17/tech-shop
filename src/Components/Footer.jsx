@@ -6,7 +6,7 @@ import { TfiLinkedin } from "react-icons/tfi";
 
 const Footer = () => {
   return (
-    <div className="bg-black text-gray-300">
+    <div className="bg-black">
       <div className="container mx-auto px-6 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
         <div className="flex flex-col items-start">
           <h3 className="mb-3  font-bold text-2xl">Tech-Shop</h3>
@@ -22,17 +22,17 @@ const Footer = () => {
             placeholder="Email Address*"
             className="bg-transparent border border-gray-700 p-2 w-full max-w-[15rem] text-sm focus:outline-none focus:border-red-600 transition-colors"
           />
-          <button className="mt-3 bg-red-600 py-2 px-6 rounded  font-semibold hover:bg-red-700 transition-colors">
+          <button className="mt-3 bg-red-600 py-2 px-6 rounded  font-semibold hover:bg-red-700 transition-colors text-white">
             Subscribe
           </button>
         </div>
         <div className="flex flex-col">
           <div className=" font-bold text-xl mb-6">Help</div>
-          <div className="flex flex-col gap-3 text-sm">
+          <div className="flex flex-col gap-3 text-sm text-gray-500 font-semibold">
             <div className="hover:text-red-600 cursor-pointer transition-colors">
               FAQs
             </div>
-            <div className="hover:text-red-600 cursor-pointer transition-colors">
+            <div className=" hover:text-red-600 cursor-pointer transition-colors">
               Track Order
             </div>
             <div className="hover:text-red-600 cursor-pointer transition-colors">
@@ -48,7 +48,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-col">
           <div className=" font-bold text-xl mb-6">Policies</div>
-          <div className="flex flex-col gap-3 text-sm">
+          <div className="flex flex-col gap-3 text-sm text-gray-500 font-semibold">
             <div className="hover:text-red-600 cursor-pointer transition-colors">
               Return Policy
             </div>
@@ -68,7 +68,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-col">
           <div className=" font-bold text-xl mb-6">Company</div>
-          <div className="flex flex-col gap-3 text-sm">
+          <div className="flex flex-col gap-3 text-sm text-gray-500 font-semibold">
             <div className="hover:text-red-600 cursor-pointer transition-colors">
               About Us
             </div>
@@ -102,7 +102,7 @@ const Footer = () => {
             <TfiLinkedin className="text-xl hover:text-red-600 cursor-pointer transition-colors" />
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="bg-red-600 px-3 py-1 rounded  hover:bg-red-700 transition-colors ml-2"
+              className="bg-red-600 px-3 py-1 rounded  hover:bg-red-700 transition-colors ml-2 text-white"
             >
               ^
             </button>

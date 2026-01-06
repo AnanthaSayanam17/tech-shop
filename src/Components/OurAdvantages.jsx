@@ -1,8 +1,7 @@
 import React from "react";
 import { TbTruckDelivery } from "react-icons/tb";
-import { HiOutlineBadgeCheck } from "react-icons/hi";
-import { IoPricetagOutline } from "react-icons/io5";
-import { MdOutlineSecurity } from "react-icons/md";
+import { FaShieldAlt, FaTags } from "react-icons/fa";
+import { IoIosCard } from "react-icons/io";
 
 const OurAdvantages = () => {
   const advantages = [
@@ -15,19 +14,19 @@ const OurAdvantages = () => {
     {
       id: 2,
       title: "Brand Warranty",
-      icon: <HiOutlineBadgeCheck size={32} />,
+      icon: <FaShieldAlt size={32} />,
       desc: "100% Original Products",
     },
     {
       id: 3,
       title: "Exciting Deals",
-      icon: <IoPricetagOutline size={32} />,
+      icon: <FaTags size={32} />,
       desc: "On all prepaid orders",
     },
     {
       id: 4,
       title: "Secure Payments",
-      icon: <MdOutlineSecurity size={32} />,
+      icon: <IoIosCard size={32} />,
       desc: "SSL/Secure Certificate",
     },
   ];

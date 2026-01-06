@@ -1,83 +1,166 @@
 import React from "react";
+import { FiTrash2, FiPlus, FiMinus } from "react-icons/fi";
+import { useCart } from "../Context/CartContext";
+import { Link } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
 
 const CartTemplate = () => {
-  return (
-    <div className="mx-4 md:mx-10 my-16 flex flex-col lg:flex-row gap-8">
-      {/* Cart Item */}
-      <div
-        className="flex flex-col md:flex-row items-center md:items-start gap-6 p-6 rounded-xl w-full lg:w-[65%]"
-        style={{ backgroundColor: "rgb(22, 24, 26)" }}
-      >
-        {/* Product Image */}
-        <img
-          src="/images/products/boat110-1.png"
-          alt=""
-          className="w-[8rem] md:w-[10rem] object-contain"
-        />
+  const { cartItems, removeFromCart, incrementQuantity, decrementQuantity } =
+    useCart();
+  const originalTotal = cartItems.reduce(
+    (acc, item) => acc + item.originalPrice * (item.quantity || 1),
+    0
+  );
+  const finalTotal = cartItems.reduce(
+    (acc, item) => acc + item.finalPrice * (item.quantity || 1),
+    0
+  );
+  const discount = originalTotal - finalTotal;
 
-        {/* Product Info */}
-        <div className="flex-1 flex flex-col gap-3">
-          <p className="font-semibold text-lg md:text-2xl leading-snug">
-            JBL Live 660NC Wireless OverEar NC Headphones
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-12 font-sans">
+      {cartItems.length === 0 ? (
+        <div className="min-h-[60vh] flex flex-col items-center justify-center text-center gap-6">
+          <h1 className="text-3xl md:text-5xl font-bold text-white">
+            Your Cart is Empty
+          </h1>
+
+          <p className="text-gray-400 text-lg md:text-xl max-w-md">
+            Looks like you haven’t added anything to your cart yet.
           </p>
 
-          <div className="flex gap-4 items-center">
-            <p className="font-bold text-xl md:text-3xl">₹14,999</p>
-            <p className="font-semibold text-lg md:text-2xl line-through opacity-50">
-              ₹21,999
-            </p>
+          <Link
+            to="/products"
+            style={{ textDecoration: "none" }}
+            className="mt-4 inline-flex items-center gap-3 bg-[#d70000] hover:bg-red-700 transition
+             px-10 py-4 rounded-sm font-bold text-white uppercase text-lg
+             hover:gap-4"
+          >
+            <FaShoppingCart className="text-xl group-hover:scale-110 transition-transform" />
+            <span>Continue Shopping</span>
+          </Link>
+        </div>
+      ) : (
+        <div className="flex flex-col lg:flex-row gap-12">
+          <div className="w-full lg:w-[60%]">
+            <div className="rounded-sm overflow-y-auto h-[500px] pr-4 no-scrollbar">
+              {cartItems.map((product) => (
+                <div key={product.id}>
+                  <div className="flex flex-row items-start gap-6 py-8 relative">
+                    <div className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
+                      <img
+                        src={product.images ? product.images[0] : product.image}
+                        alt={product.title}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                    <div className="flex-1 flex flex-col gap-3">
+                      <div className="flex justify-between items-start">
+                        <h3 className="text-lg md:text-xl font-medium max-w-[85%] leading-tight">
+                          {product.title}
+                        </h3>
+                        <button
+                          onClick={() => removeFromCart(product.id)}
+                          className="text-gray-500 hover:text-red-500 transition-colors pt-1"
+                        >
+                          <FiTrash2 size={20} />
+                        </button>
+                      </div>
+
+                      <div className="flex gap-3 items-center">
+                        <span className="font-bold text-3xl">
+                          ₹{product.finalPrice.toLocaleString()}
+                        </span>
+                        <span className="text-gray-500 line-through text-2xl font-bold">
+                          ₹{product.originalPrice.toLocaleString()}
+                        </span>
+                      </div>
+                      <div className="flex mt-2">
+                        <div className="flex items-center bg-[#1a1a1a] border border-gray-800 rounded">
+                          <button
+                            onClick={() => decrementQuantity(product.id)}
+                            disabled={product.quantity <= 1}
+                            className="p-2 text-gray-400 hover:bg-gray-800 transition
+                          disabled:opacity-30 disabled:cursor-not-allowed"
+                          >
+                            <FiMinus size={14} />
+                          </button>
+
+                          <span className="px-4 py-1 text-red-600 font-bold text-lg border-x border-gray-800 min-w-[45px] text-center">
+                            {product.quantity || 1}
+                          </span>
+
+                          <button
+                            onClick={() => incrementQuantity(product.id)}
+                            disabled={product.quantity >= 5}
+                            className="p-2 text-gray-400 hover:bg-gray-800 transition
+                          disabled:opacity-30 disabled:cursor-not-allowed"
+                          >
+                            <FiPlus size={14} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr className="border-gray-800" />
+                </div>
+              ))}
+            </div>
           </div>
+          <div className="w-full lg:w-[40%] lg:pl-8">
+            <div className="flex flex-col gap-6 sticky top-10">
+              <div className="flex items-baseline gap-2 font-bold">
+                <h2 className="text-2xl">Order Summary</h2>
+                <span className="text-gray-400 text-lg">
+                  ({cartItems.length} items)
+                </span>
+              </div>
 
-          {/* Quantity */}
-          <div className="flex items-center gap-6 mt-2">
-            <button className="border px-4 py-1 text-xl hover:bg-white/10">
-              -
-            </button>
-            <span className="text-red-600 text-xl font-semibold">1</span>
-            <button className="border px-4 py-1 text-xl hover:bg-white/10">
-              +
-            </button>
+              <div className="space-y-4 pt-4">
+                <div className="flex justify-between text-gray-400 text-lg">
+                  <p>Original Price</p>
+                  <p className="font-bold">₹{originalTotal.toLocaleString()}</p>
+                </div>
+
+                <div className="flex justify-between text-lg">
+                  <p className="text-gray-400">Discount</p>
+                  <p className="text-green-500 font-bold">
+                    - ₹{discount.toLocaleString()}
+                  </p>
+                </div>
+
+                <div className="flex justify-between text-lg">
+                  <p className="text-gray-400">Delivery</p>
+                  <p className="text-green-500 font-bold">Free</p>
+                </div>
+              </div>
+
+              <hr className="border-gray-800 my-2" />
+
+              <div className="flex justify-between items-center py-4">
+                <p className="text-2xl font-bold">Total Price</p>
+                <p className="text-3xl font-bold">
+                  ₹{finalTotal.toLocaleString()}
+                </p>
+              </div>
+
+              <button className="w-full bg-[#d70000] hover:bg-red-700 py-4 rounded-sm font-bold text-white uppercase">
+                Checkout
+              </button>
+            </div>
           </div>
         </div>
-
-        {/* Delete */}
-        <button className="text-red-500 hover:text-red-600 text-sm md:text-base">
-          Delete
-        </button>
-      </div>
-
-      {/* Order Summary */}
-      <div
-        className="w-full lg:w-[35%] p-6 rounded-xl"
-        style={{ backgroundColor: "#141414" }}
-      >
-        <div className="flex mb-4 gap-5 font-bold text-[1.5rem]">
-          <p className="font-bold text-[1.5rem]">Order Summary</p>
-          <p className="opacity-70">( 4 items )</p>
-        </div>
-
-        <div className="flex justify-between mb-2">
-          <h5>Original Price</h5>
-          <h6>₹45,547</h6>
-        </div>
-
-        <div className="flex justify-between mb-2 ">
-          <h5>Discount</h5>
-          <p className="text-green-500">-₹4,547</p>
-        </div>
-
-        <div className="flex justify-between mb-4 ">
-          <h5>Delivery</h5>
-          <p className="text-green-500">Free</p>
-        </div>
-
-        <hr className="border-white/10 mb-4" />
-
-        <div className="flex justify-between text-[2rem] font-bold">
-          <p>Total Price</p>
-          <p>₹40,999</p>
-        </div>
-      </div>
+      )}
+      <style jsx>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 };

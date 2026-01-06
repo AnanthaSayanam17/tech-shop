@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import { useCart } from "../Context/CartContext";
+import toast, { Toaster } from "react-hot-toast";
 
 const TopProduct = ({ product }) => {
+  const [isAdded, setIsAdded] = useState(false);
+
+  const handleAddToCart = () => {
+    const limitReached = addToCart(product);
+
+    if (limitReached) {
+      toast.error("Maximum limit of 5 items reached!", {
+        style: { borderRadius: "10px", background: "#333", color: "#fff" },
+      });
+    } else {
+      toast.success("Added to cart!", {
+        duration: 2000,
+        style: { borderRadius: "10px", background: "#333", color: "#fff" },
+      });
+      setIsAdded(true);
+      setTimeout(() => {
+        setIsAdded(false);
+      }, 4000);
+    }
+  };
+
+  const { addToCart } = useCart();
   const ratingStars = Array.from(
     { length: product.rateCount || 0 },
     (_, i) => i + 1
@@ -8,6 +32,7 @@ const TopProduct = ({ product }) => {
 
   return (
     <div className="p-5 border border-gray-800 rounded-xl w-full bg-[#1a1a1a] flex flex-col hover:border-gray-600 transition-all duration-300 shadow-lg">
+      <Toaster position="bottom-right" reverseOrder={false} />
       <div className="flex justify-center items-center mb-5 h-48">
         <img
           src={product.images[0]}
@@ -41,8 +66,15 @@ const TopProduct = ({ product }) => {
       </div>
 
       <div className="mt-auto">
-        <button className="bg-red-600 hover:bg-red-700 py-2.5 px-4 rounded-lg text-white font-semibold w-full transition-colors active:scale-95">
-          Add to Cart
+        <button
+          className={`py-2.5 px-4 rounded-lg text-white font-semibold w-full transition-all duration-300 active:scale-95 ${
+            isAdded
+              ? "bg-green-600 hover:bg-green-700"
+              : "bg-red-600 hover:bg-red-700"
+          }`}
+          onClick={handleAddToCart}
+        >
+          {isAdded ? "Added!" : "Add to Cart"}
         </button>
       </div>
     </div>
