@@ -17,10 +17,10 @@ const Home = () => {
           overflowX: "hidden",
         }}
       >
+        <Navbar />
         <Hero />
         <FeaturedProducts />
         <TopProducts />
-        <Navbar />
         <OurAdvantages />
         <Footer />
       </div>

@@ -5,7 +5,11 @@ const Slider1 = ({ product }) => {
   return (
     <div className="relative min-h-screen overflow-hidden">
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[15rem] left-20 -translate-y-1/2 text-[12rem] font-bold text-white/10 select-none pl-6">
+        <div
+          className="
+  absolute top-[11rem] left-4 sm:top-[10rem] sm:left-10 md:top-[12rem] md:left-0 -translate-y-1/2 text-[8rem] sm:text-[7rem] md:text-[11rem] lg:text-[15rem] lg:top-[15rem] lg:left-20 font-bold text-white/10 select-none pl-0 sm:pl-4 md:pl-6
+"
+        >
           {product.type}
         </div>
       </div>
