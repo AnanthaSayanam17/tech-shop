@@ -58,10 +58,10 @@ const TopProduct = ({ product }) => {
       <hr className="m-0 mb-4 border-gray-700" />
 
       <div className="flex items-center gap-4 mb-4">
-        <p className="font-bold text-xl ">
+        <p className="font-bold text-2xl ">
           ₹{product.finalPrice?.toLocaleString()}
         </p>
-        <p className="font-semibold text-sm line-through text-gray-500">
+        <p className="font-semibold text-xl line-through text-gray-500">
           ₹{product.originalPrice?.toLocaleString()}
         </p>
       </div>

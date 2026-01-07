@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // For navigation
+import { Link } from "react-router-dom";
 import productsData from "../data/productsData";
 import TopProduct from "./TopProduct";
 
@@ -19,8 +19,6 @@ const TopProducts = () => {
   return (
     <div className="container mx-auto px-4 py-10">
       <h2 className="text-2xl font-bold text-center mb-6">Top Products</h2>
-
-      {/* Category Filter Buttons */}
       <div className="flex flex-wrap justify-around items-center gap-3 my-5 pb-2">
         {["All", "Headphones", "Earbuds", "Earphones", "Neckbands"].map(
           (cat) => (
@@ -39,23 +37,18 @@ ${
           )
         )}
       </div>
-
-      {/* Products Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {filteredProducts.length > 0 ? (
           <>
-            {/* Display first 11 products */}
             {filteredProducts.slice(0, 11).map((product) => (
               <Link
                 to={`/product/${product.id}`}
                 key={product.id}
-                className="group product-link" // Add this class
+                className="group product-link"
               >
                 <TopProduct product={product} />
               </Link>
             ))}
-
-            {/* 12th Card: Browse All Products */}
             <Link
               to="/products"
               style={{ textDecoration: "none", color: "white" }}

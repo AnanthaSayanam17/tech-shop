@@ -3,8 +3,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider1 from "./Slider1";
-import Slider2 from "./Slider2";
-import Slider3 from "./Slider3";
 import productsData from "../data/productsData";
 
 export default function Hero() {
@@ -37,12 +35,12 @@ export default function Hero() {
         </div>
         {heroProducts[1] && (
           <div className="outline-none">
-            <Slider2 product={heroProducts[1]} />
+            <Slider1 product={heroProducts[1]} />
           </div>
         )}
         {heroProducts[2] && (
           <div className="outline-none">
-            <Slider3 product={heroProducts[2]} />
+            <Slider1 product={heroProducts[2]} />
           </div>
         )}
       </Slider>

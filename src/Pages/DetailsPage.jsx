@@ -1,6 +1,6 @@
 import React from "react";
-import { useParams } from "react-router-dom"; // Import useParams to get the ID
-import productsData from "../data/productsData"; // Import data
+import { useParams } from "react-router-dom";
+import productsData from "../data/productsData";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import DetailProduct from "../Components/DetailProduct";

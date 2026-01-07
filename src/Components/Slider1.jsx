@@ -1,7 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Slider1 = ({ product }) => {
+  const navigate = useNavigate();
+
   if (!product) return null;
+
+  const handleShopNow = () => {
+    navigate(`/product/${product.id}`);
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden">
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -39,7 +47,10 @@ const Slider1 = ({ product }) => {
           </div>
 
           <div className="mb-3">
-            <button className="bg-red-600 hover:bg-red-700 transition-colors py-2 md:py-2.5 px-6 rounded text-white font-semibold">
+            <button
+              className="bg-red-600 hover:bg-red-700 transition-colors py-2 md:py-2.5 px-6 rounded text-white font-semibold"
+              onClick={handleShopNow}
+            >
               Shop Now
             </button>
           </div>

@@ -73,7 +73,10 @@ const Navbar = () => {
               }}
             />
             <Link to="/cart" className="relative">
-              <IoCartOutline className="cursor-pointer text-2xl" />
+              <IoCartOutline
+                className="cursor-pointer text-2xl"
+                style={{ color: "rgb(169, 174, 194)" }}
+              />
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full font-bold">
                   {cartCount}
