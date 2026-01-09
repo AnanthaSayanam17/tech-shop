@@ -4,6 +4,7 @@ import Home from "../Pages/Home";
 import Cart from "../Pages/Cart";
 import AllProducts from "../Pages/AllProducts";
 import DetailsPage from "../Pages/DetailsPage";
+import ErrorPage from "../Components/ErrorPage";
 
 const Routing = () => {
   return (
@@ -13,7 +14,7 @@ const Routing = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/products" element={<AllProducts />} />
         <Route path="/product/:id" element={<DetailsPage />} />
-        <Route path="/*" element={<h2>Page NOt Found</h2>} />
+        <Route path="/*" element={<ErrorPage />} />
       </Routes>
     </div>
   );

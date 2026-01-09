@@ -26,7 +26,6 @@ const Specifications = () => {
 
   return (
     <div className="max-w-[1400px] mx-auto mt-16 px-4 pb-20">
-      {/* Tab Headers - Flat Button Style */}
       <div className="flex flex-wrap justify-center gap-4 mb-12">
         <TabButton label="Specifications" id="specifications" />
         <TabButton label="Overview" id="overview" />
@@ -34,7 +33,6 @@ const Specifications = () => {
       </div>
 
       <div className="min-h-[300px]">
-        {/* 1. Specifications Tab - Single Column Flat */}
         {activeTab === "specifications" && (
           <div className="flex flex-col max-w-2xl mx-auto">
             {[
@@ -59,8 +57,6 @@ const Specifications = () => {
             ))}
           </div>
         )}
-
-        {/* 2. Overview Tab */}
         {activeTab === "overview" && (
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <h2 className="text-2xl font-bold text-white mb-4 uppercase tracking-tighter">
@@ -73,8 +69,6 @@ const Specifications = () => {
             </p>
           </div>
         )}
-
-        {/* 3. Reviews Tab - Clean Flat Cards */}
         {activeTab === "reviews" && (
           <div className="max-w-3xl mx-auto space-y-4">
             {reviewsData.map((rev) => (

@@ -3,31 +3,25 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import productsData from "../data/productsData";
 import TopProduct from "./TopProduct";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 
 const RelatedProducts = ({ currentProduct }) => {
-  // Filter products by type, excluding the current one
   const related = productsData.filter(
     (item) => item.type === currentProduct.type && item.id !== currentProduct.id
   );
 
   if (related.length === 0) return null;
-
-  // Function to ensure we start at the top of the new product page
   const handlePageChange = () => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "instant", // Use "smooth" if you prefer a sliding effect
+      behavior: "instant",
     });
   };
 
   return (
     <div className="max-w-[1200px] mx-auto px-6 py-12">
-      {/* Centered Heading */}
       <div className="mb-12 text-center">
         <h2 className="text-3xl font-bold text-white uppercase tracking-widest">
           Related <span className="text-red-600">Products</span>
@@ -49,12 +43,10 @@ const RelatedProducts = ({ currentProduct }) => {
           1024: { slidesPerView: 3 },
           1280: { slidesPerView: 4 },
         }}
-        /* pb-24 ensures the dots stay far below the "Add to Cart" button */
         className="related-swiper pb-24"
       >
         {related.map((prod) => (
           <SwiperSlide key={prod.id} className="h-auto">
-            {/* Click handler added here to reset scroll position */}
             <div
               className="related-card-container h-full cursor-pointer"
               onClick={handlePageChange}

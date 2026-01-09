@@ -55,11 +55,7 @@ const DetailProduct = () => {
       <Toaster position="bottom-right" />
 
       <div className="flex flex-col lg:flex-row gap-8 w-full mx-auto">
-        {/* LEFT SIDE - IMAGES */}
-
-        {/* DESKTOP & TABLET (md+) */}
         <div className="hidden md:flex gap-6 flex-shrink-0 w-full lg:w-auto">
-          {/* Thumbnails - Left Side */}
           <div className="flex flex-col gap-4">
             {product.images.map((img, idx) => (
               <img
@@ -75,8 +71,6 @@ const DetailProduct = () => {
               />
             ))}
           </div>
-
-          {/* Main Image */}
           <div className="flex-1 flex justify-center items-center bg-[#1a1a1a] rounded-lg p-6 h-[500px] md:w-[500px]">
             <img
               src={activeImage}
@@ -85,10 +79,7 @@ const DetailProduct = () => {
             />
           </div>
         </div>
-
-        {/* MOBILE (below md) */}
         <div className="flex flex-col gap-4 md:hidden w-full">
-          {/* Main Image */}
           <div className="flex justify-center items-center bg-[#1a1a1a] rounded-lg p-6 h-[350px] w-full">
             <img
               src={activeImage}
@@ -96,8 +87,6 @@ const DetailProduct = () => {
               className="max-w-full max-h-full object-contain transition-transform duration-500 hover:scale-105"
             />
           </div>
-
-          {/* Thumbnails below with more top margin */}
           <div className="flex flex-row gap-4 overflow-x-auto pb-2 mt-6">
             {product.images.map((img, idx) => (
               <img
@@ -114,11 +103,8 @@ const DetailProduct = () => {
             ))}
           </div>
         </div>
-
-        {/* RIGHT SIDE - DETAILS */}
         <div className="w-full lg:w-1/2 flex flex-col justify-start py-4">
           <div className="space-y-6">
-            {/* Header Section */}
             <div className="space-y-4">
               <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
                 {product.title}
@@ -126,8 +112,6 @@ const DetailProduct = () => {
               <p className="text-xl text-gray-400 font-medium tracking-wide">
                 {product.info}
               </p>
-
-              {/* Ratings */}
               <div className="flex items-center gap-3 pt-2">
                 <div className="flex">
                   {Array.from({ length: 5 }).map((_, idx) => (
@@ -150,8 +134,6 @@ const DetailProduct = () => {
             </div>
 
             <hr className="border-gray-800" />
-
-            {/* Pricing Section with In-Stock Badge */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="space-y-1">
                 <div className="flex items-baseline gap-4">
@@ -167,11 +149,8 @@ const DetailProduct = () => {
                   {((discount / product.originalPrice) * 100).toFixed(0)}% Off)
                 </p>
               </div>
-
-              {/* In Stock Button - Now with Solid Green BG and positioned by price */}
               <div className="flex-shrink-0">
                 <span className="px-6 py-2 text-sm font-bold uppercase tracking-widest bg-green-600 text-white rounded-sm cursor-default whitespace-nowrap flex items-center gap-2 shadow-lg shadow-green-900/20">
-                  {/* SVG Tick Icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -196,25 +175,16 @@ const DetailProduct = () => {
             </p>
 
             <hr className="border-gray-800" />
-
-            {/* Offers - Smaller Boxes */}
-            {/* Offers Section */}
             <div className="flex flex-col gap-3">
-              {/* Heading */}
               <p className="font-semibold text-xl tracking-wide">
                 Offers and Discounts
               </p>
-
-              {/* Container for Boxes */}
               <div className="flex flex-wrap gap-3">
-                {/* Box 1 */}
                 <div className="flex-1 max-w-[180px] bg-[#1a1a1a] p-3 border border-gray-800 hover:border-gray-600 transition-colors rounded-sm group">
                   <p className="text-xl text-gray-400 leading-tight group-hover:text-gray-200">
                     No cost EMI on <br /> Credit Cards
                   </p>
                 </div>
-
-                {/* Box 2 */}
                 <div className="flex-1 max-w-[180px] bg-[#1a1a1a] p-3 border border-gray-800 hover:border-gray-600 transition-colors rounded-sm group">
                   <p className="text-xl text-gray-400 leading-tight group-hover:text-gray-200">
                     Pay later & Avail <br /> Cashback
@@ -222,8 +192,6 @@ const DetailProduct = () => {
                 </div>
               </div>
             </div>
-
-            {/* Add to Cart Button - Smaller size */}
             <div className="pt-4">
               <button
                 onClick={handleAddToCart}

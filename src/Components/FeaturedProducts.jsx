@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectCoverflow } from "swiper/modules";
-import { Link } from "react-router-dom"; // For navigation
+import { Link } from "react-router-dom";
 import productsData from "../data/productsData";
 
 import "swiper/css";
@@ -74,26 +74,20 @@ const FeaturedProducts = () => {
         >
           {featured.map((product, index) => (
             <SwiperSlide key={`featured-${product.id}-${index}`}>
-              {/* Link with class to remove default styles */}
               <Link to={`/product/${product.id}`} className="featured-link">
                 <div className="flex flex-col items-center justify-center bg-transparent transition-all duration-500 w-full max-w-[280px] mx-auto cursor-pointer">
-                  {/* Title */}
                   <div className="mb-6 text-center w-full min-h-[100px] flex flex-col justify-end">
                     <h3 className="text-sm md:text-lg font-bold mb-2 whitespace-normal leading-tight px-2">
                       {product.title}
                     </h3>
                   </div>
-
-                  {/* Image */}
                   <div className="relative">
                     <img
-                      src={product.images[0]} // ALWAYS show first image
+                      src={product.images[0]}
                       alt={product.title}
                       className="w-full h-40 md:h-56 object-contain drop-shadow-[0_10px_30px_rgba(255,255,255,0.2)]"
                     />
                   </div>
-
-                  {/* Price */}
                   <div className="flex justify-center items-center gap-3 mt-2">
                     <p className="font-bold text-lg md:text-xl">
                       ₹{product.finalPrice.toLocaleString()}
@@ -109,8 +103,6 @@ const FeaturedProducts = () => {
           <div className="custom-pagination !mt-16 flex justify-center items-center gap-3"></div>
         </Swiper>
       </div>
-
-      {/* Global Styles */}
       <style jsx global>{`
         /* Remove link default styles */
         .featured-link {

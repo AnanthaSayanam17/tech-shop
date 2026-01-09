@@ -42,7 +42,6 @@ const CartTemplate = () => {
         </div>
       ) : (
         <div className="flex flex-col lg:flex-row gap-12 items-center lg:items-start">
-          {/* LEFT CART ITEMS */}
           <div className="w-full lg:w-[60%]">
             <div className="rounded-sm overflow-y-auto h-[500px] pr-4 no-scrollbar">
               {cartItems.map((product) => (
@@ -109,8 +108,6 @@ const CartTemplate = () => {
               ))}
             </div>
           </div>
-
-          {/* RIGHT ORDER SUMMARY */}
           <div className="w-full lg:w-[40%] lg:pl-0 lg:pl-8 flex flex-col items-center lg:items-start">
             <div className="flex flex-col gap-6 sticky top-10 w-full">
               <div className="flex items-baseline gap-2 font-bold flex-wrap justify-center lg:justify-start w-full">
